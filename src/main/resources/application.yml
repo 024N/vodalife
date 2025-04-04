@@ -1,0 +1,45 @@
+spring:
+  application:
+    name: vodalife
+  security:
+    user:
+      name: admin
+      password: password
+  data:
+    mongo:
+      uri: mongodb://mongo:27017/vodalife
+      auto-index-creation: true
+    # username: admin
+    # password: password
+    
+logging:
+  level:
+    root: INFO
+    org.springframework.security: DEBUG
+    com.vodafone.vodalife: DEBUG
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  metrics:
+    export:
+      otlp:
+        enabled: true
+        endpoint: http://otel-collector:4318 # OpenTelemetry Collector endpoint
+  tracing:
+    enabled: true
+    sampling:
+      probability: 1.0 # Tüm istekleri izlemek için örnekleme oranı
+
+otel:
+  exporter:
+    otlp:
+      endpoint: http://otel-collector:4318 # OpenTelemetry Collector endpoint
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
