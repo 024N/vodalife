@@ -37,6 +37,8 @@ public class CustomerService {
             customer.setName(updatedCustomer.getName());
             customer.setEmail(updatedCustomer.getEmail());
             customer.setPhoneNumber(updatedCustomer.getPhoneNumber());
+            customer.setPassword(updatedCustomer.getPassword());
+            customer.setTotalPoints(updatedCustomer.getTotalPoints());
             return customerRepository.save(customer);
         }
         return null; // Eğer müşteri bulunamazsa null döner
